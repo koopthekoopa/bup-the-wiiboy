@@ -59,7 +59,7 @@ sudo pacman -S git make gcc wii-dev wii-sdl2 ppc-libpng
 
 1. Clone the repository
 ```sh
-git clone --recursive https://github.com/bup-the-catboy/bup-the-catboy && cd bup-the-catboy
+git clone --recursive https://github.com/koopthekoopa/bup-the-wiiboy && cd bup-the-wiiboy
 ```
 2. [Acquire assets](#acquiring-assets)*
 3. Compile the game using the `make -j$(nproc)` command
