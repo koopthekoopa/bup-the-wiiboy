@@ -1,6 +1,7 @@
-# Bup the Catboy
+# Bup the Catboy (Wii Port)
 
-A Mario-like 2D platformer game written in C with SDL
+A Mario-like 2D platformer game written in C with SDL.   
+Ported to Nintendo Wii by KoopTheKoopa.
 
 ## Source Tree
 
@@ -29,15 +30,17 @@ tools         - Programs used during compilation
 
 ## Building
 
+You must install devkitpro first. You can follow on how to [here](https://devkitpro.org/wiki/Getting_Started).   
+
 ### Windows
 
-1. Install the [MSYS2 Toolchain](https://msys2.org)
-2. Launch the **MINGW64** shell
-3. Install dependencies
+1. Launch the **MSys2** shell that is bundled in devkitpro
+   (should be either in your start menu or `<devkitpro directory>/msys2/msys2.exe`)
+2. Install dependencies
 ```sh
-pacman -S git make mingw-w64-x86_64-gcc mingw-w64-x86_64-SDL2 mingw-w64-x86_64-libgme mingw-w64-x86_64-glew
+pacman -S git make base-devel gcc wii-dev wii-sdl2 ppc-libpng
 ```
-4. Follow the [General compile steps](#general-compile-steps)
+3. Follow the [General compile steps](#general-compile-steps)
 
 ### Linux
 
@@ -45,64 +48,23 @@ pacman -S git make mingw-w64-x86_64-gcc mingw-w64-x86_64-SDL2 mingw-w64-x86_64-l
 
 **Debian**
 ```sh
-sudo apt install git make gcc libsdl2-dev libgme-dev libglew-dev
+sudo dkp-pacman -S git make gcc wii-dev wii-sdl2 ppc-libpng
 ```
 **Arch**
 ```sh
-sudo pacman -S git make gcc sdl2 libgme glew
+sudo pacman -S git make gcc wii-dev wii-sdl2 ppc-libpng
 ```
 2. Follow the [General compile steps](#general-compile-steps)
-
-### macOS (not tested)
-
-1. Install [Homebrew](https://brew.sh/)
-2. Install dependencies
-```sh
-brew install gcc make sdl2 game-music-emu glew
-```
-3. Follow the [General compile steps](#general-compile-steps)
-
-### Cross compiling for Windows on Linux
-
-1. Setup `quasi-msys2` on your distro using the following command:
-```
-curl https://raw.githubusercontent.com/bup-the-catboy/bup-the-catboy/main/quasi-msys2-setup.sh | sh
-```
-2. After that, run `~/quasi-msys2/env/shell.sh`
-3. Install dependencies
-```sh
-pacmake install _gcc _SDL2 _libgme _glew
-```
-4. Follow the [General compile steps](#general-compile-steps)
-
-### Cross compiling for macOS on Linux
-
-1. Download Xcode from [Apple's website](https://developer.apple.com/download/all/?q=xcode)
-2. Setup `osxcross` on your distro using the following command:
-```sh
-curl https://raw.githubusercontent.com/bup-the-catboy/bup-the-catboy/main/osxcross-setup.sh | XCODE_PATH=<path to xcode xip> sh
-```
-3. Install dependencies
-```sh
-omp install libsdl2 glew mesa mesa-glu
-curl https://raw.githubusercontent.com/bup-the-catboy/bup-the-catboy/main/osxcross-libgme.sh | sh
-```
-4. Turn on macOS cross compile mode for the `Makefile`
-```sh
-export MACOS_CROSS=1
-export MACOS_ARCH=x86_64 # optional
-```
-5. Follow the [General compile steps](#general-compile-steps)
 
 ### General compile steps
 
 1. Clone the repository
 ```sh
-git clone --recursive https://github.com/bup-the-catboy/bup-the-catboy && cd bup-the-catboy
+git clone --recursive https://github.com/koopthekoopa/bup-the-wiiboy && cd bup-the-wiiboy
 ```
 2. [Acquire assets](#acquiring-assets)*
 3. Compile the game using the `make -j$(nproc)` command
-4. The executable should be located at `build/btcb`
+4. The executable should be located at `build/btcb.dol`
 
 *Assets aren't required for the game to compile, but it won't be able to run correctly as level, texture and sound data is missing. 
 
